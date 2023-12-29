@@ -31,27 +31,29 @@ const blocker = () => {
 };
 
 const checkGuess = () => {
-  console.log("checkGuess function called.");
+  
 
   const inputSpaceElements = document.querySelectorAll('.inputSpace');
   const userGuess = Array.from(inputSpaceElements).map(space => space.innerText.replace(/\s/g, "")).join('').toLowerCase();
-  console.log("userGuess:", userGuess);
+  
 
   if (userGuess === randomHint.toLowerCase().replace(/\s/g, "")) {
     resultText.innerHTML = "Correct! Next Movie.";
 
     correctGuesses += 1;
-    console.log("Correct guess. Incrementing correctGuesses. Total Correct Guesses:", correctGuesses);
+    
 
     if (correctGuesses === Object.keys(moviesObject).length) {
       chanceCountElement.innerHTML = `Your Score: ${correctGuesses}`;
+      document.getElementById("scoreEnd").innerHTML = correctGuesses;
       blocker();
       guessButton.disabled = true;
       guessButton.innerText = "GAME OVER";
-      console.log("YOU WON.");
-    } else {
-      console.log("Moving to the next movie.");
+      document.getElementById("gameDone").classList.add("show")
 
+      
+    } else {
+      
       const movieIndex = remainingMovies.indexOf(randomHint);
       if (movieIndex !== -1) {
         remainingMovies.splice(movieIndex, 1);
@@ -64,9 +66,12 @@ const checkGuess = () => {
     chanceCountElement.innerHTML = `<span>Tries Left:</span> ${chanceCount}`;
     if (chanceCount < 0) {
       chanceCountElement.innerHTML = `Your Score: ${correctGuesses}`;
+      document.getElementById("scoreEnd").innerHTML = correctGuesses;
       blocker();
       guessButton.disabled = true;
       guessButton.innerText = "GAME OVER";
+      document.getElementById("gameLost").classList.add("show")
+      document.getElementById("scoreEndLost").innerHTML = correctGuesses;
     } else {
       guessButton.disabled = false;
       guessButton.innerText = "Check";
@@ -81,11 +86,11 @@ const resetInput = () => {
 
   Array.from(inputSpaceElements).forEach((space) => {
     if(space.textContent.match(/[a-z]/i)){
-     // console.log("content is : " + space.textContent)
+     
       space.innerText = "_";
 
     }else{
-    //  console.log("no")
+    
       space.innerText = " ";
     }
 
