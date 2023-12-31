@@ -1,32 +1,50 @@
-<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Guess The Movie</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="wrapper">
-      <h1>GUESS THE MOVIE</h1>
-      
-      <div class="num-of-tries-left" id="chanceCount">
-        <span>Tries Left:</span>4
-      </div>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guess The Movie</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrapper">
+    <h2 id="guessTheMovieTitle">GUESS THE MOVIE</h2>
 
-      <div class="container"></div>
-      <div id="letter-container" class="hide"></div>
-      <div id="userInputSection"></div>
-      <button id="checkButton">Check</button>
+    <div class="num-of-tries-left" id="chanceCount">
+      <span>Chances Left :</span>4
     </div>
-    <div class="controls-container">
-      <h1>GUESS THE MOVIE</h1>
-      <p id="result"></p>
-      <a id="start">Start</a>
-    </div>
-   
-    <script src="script.js"></script>
-    <script>
-    
-    </script>
-  </body>
+
+    <div class="container"></div>
+    <div id="letter-container" class="hide"></div>
+    <div id="userInputSection"></div>
+  </div>
+
+  <div class="controls-container">
+    <h1 id="guessTheMovieTitleControls">GUESS THE MOVIE</h1>
+    <p id="result"></p>
+    <a id="start" style="display: block; z-index: 1;">Start</a>
+  </div>
+
+  <section id="gameDone" class="block-won">
+    <h2>You Won </h2> <br><br>
+    <h2>Your Score : </h2> <span id="scoreEnd"></span>
+    <a class="" href="index.html"> Play Again</a>
+  </section>
+
+  <section id="gameLost" class="block-lost">
+    <h2>You Lost </h2> <br><br>
+    <h2>Your Score : </h2> <span class="lostScore" id="scoreEndLost"></span>
+    <a class="" href="index.html"> Play Again</a>
+  </section>
+
+  <script src="script.js"></script>
+  <script>
+
+    startButton.addEventListener("click", () => {
+      console.log("Start button clicked");
+    });
+
+  </script>
+</body>
+<footer>
+  <a href="https://codingartistweb.com/2023/02/guess-the-movie-with-emojis/" target="_blank">Referans Linki</a>
+</footer>
 </html>
